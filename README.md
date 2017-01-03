@@ -19,4 +19,4 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 =======
 # vue-minBBS
 
-
+### 这只是前端文件，服务端还没有发布
