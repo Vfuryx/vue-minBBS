@@ -1,15 +1,17 @@
-//import Vue from 'vue'                  //生产环境需要注释
-//import VueRouter from 'vue-router'     //生产环境需要注释
+import Vue from 'vue'                  //生产环境需要注释
+import VueRouter from 'vue-router'     //生产环境需要注释
 import App from './App'
 import Home from './components/Home'
 import Login from './components/Login'
 import Register from './components/Register'
 import Info from './components/Info'
 import module from './components/module'
+import PrivateLetter from './components/PrivateLetter'
 import Power from './components/Power'
 import store from './store'
 
 Vue.use(VueRouter)
+
 
 const routes = [{
   path : '/home',
@@ -18,32 +20,47 @@ const routes = [{
 },{
   path : '/login',
   meta: { auth: false },
-  name:'login',
+  component: Login
+},{
+  path : '/',
+  meta: { auth: false },
   component: Login
 },{
   path : '/register',
-  name:'register',
   component: Register
+},{
+  path: '/otheruserinfo',
+  name: 'otheruserinfo',
+  component: OtherUserInfo,
+  children:[{
+    path: 'sendprivateletter',
+    name: 'sendprivateletter',
+    component: PrivateLetter
+  }]
 },{
   path : '/info',
   name: 'info',
   component: Info,
   children: [{
-    path: '/power',
+    path: 'power',
     component: Power,
     name: 'power'
   },{
-    path: '/module',
+    path: 'module',
     component: module,
     name: 'module'
-  }]
+  },{
+    path : 'privateletter',
+    name : 'privateletter',
+    component: PrivateLetter
+  }
+  ]
 }
 ,{
   path : '/',
   redirect: { name: 'home' }
 },
 ]
-
 
 
 const router = new VueRouter({

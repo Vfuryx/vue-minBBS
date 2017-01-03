@@ -5,7 +5,7 @@
                 <router-link v-if=" loginUser=='游客' " to="/" >
                     <img  class="user-pic" src="http://7xr3sq.com1.z0.glb.clouddn.com/photo.jpg" alt="">
                 </router-link>
-                <router-link v-else to="/module" >
+                <router-link v-else to="/info/module" >
                     <img  class="user-pic" src="http://7xr3sq.com1.z0.glb.clouddn.com/photo.jpg" alt="">
                 </router-link>
                 <h2 class="user-name">{{loginUser}}</h2>

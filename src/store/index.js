@@ -1,8 +1,8 @@
-//import Vue from 'vue' //生产环境需要注释
+import Vue from 'vue' //生产环境需要注释
 import Vuex from 'vuex'
 import Axios from 'axios'
 
-//Vue.use(Vuex)       //生产环境需要注释
+Vue.use(Vuex)       //生产环境需要注释
 
 const state = {
     // 登录信息
@@ -29,6 +29,7 @@ const mutations = {
     getUserPowerInfos: (state,i) => {state.userPowerInfos = i}
 
 }
+
 
 const actions = {
   getlu ({ commit }, i) {
@@ -218,8 +219,52 @@ const actions = {
               alert('失败')
           }
       })
+  },
+  getPrivateLetter ({ commit , state }) {
+    //先获取分页数
+    Axios.get('index.php',{
+      params: {
+        c: "UserInfo" ,
+        p: "front" ,
+        a: "getPrivateLetterPage",
+        loginuser: state.loginUser
+      }
+    }).then(
+      //再获取数据
+      Axios.get('index.php', {
+        params: {
+          c: "UserInfo",
+          p: "front",
+          a: "getPrivateLetter",
+          user: state.loginUser
+        }
+      }).then((response) => {
+        if (response.data) {
+
+        } else {
+          alert('失败')
+        }
+      })
+    )
+  },
+  sendPrivateLetter ({commit , state }, param){
+    Axios.post(
+      'index.php?c=UserInfo&p=front&a=sendPrivateLetter',{
+        user: state.loginUser,
+        privateletter: param
+      }
+    ).then((response) => {
+      if(response.data){
+
+      }else {
+        alert('失败')
+      }
+    })
   }
 }
+
+
+
 
 export default new Vuex.Store({
     state,
