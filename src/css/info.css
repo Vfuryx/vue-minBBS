@@ -1,0 +1,62 @@
+.info{
+    padding-bottom: 10px;
+}
+
+.info p , .intro{
+    box-sizing: border-box;
+    margin: 10px 0;
+    padding-left: 60px;
+    padding-right: 10px;
+
+    font-size: 18px;
+    line-height: 25px;
+    color: #333333;
+}
+
+.info p{
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    overflow:hidden;
+}
+.info p:nth-child(3){  background: url("http://7xr3sq.com1.z0.glb.clouddn.com/info.png") no-repeat 25px 0px ;  }
+.info p:nth-child(2){  background: url("http://7xr3sq.com1.z0.glb.clouddn.com/info.png") no-repeat 25px -25px ;  }
+.info p:nth-child(1){  background: url("http://7xr3sq.com1.z0.glb.clouddn.com/info.png") no-repeat 25px -50px ;  }
+
+.intro{
+    word-wrap:break-word;
+    word-break:break-all;
+    background: url("http://7xr3sq.com1.z0.glb.clouddn.com/info.png") no-repeat 25px -75px ;
+}
+
+
+.delete{
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 30px;
+    height: 30px;
+    margin-right: 8px;
+    margin-top: 8px;
+
+    outline: none;
+    border: none;
+    cursor: pointer;
+
+    background: url("http://7xr3sq.com1.z0.glb.clouddn.com/untitled96.png") no-repeat ;
+    background-size: cover;
+}
+
+.powersub{
+    background: #ffabab none repeat scroll 0 0;
+    border: 0 none;
+    border-radius: 5px;
+    color: #fff;
+    display: block;
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 1.5;
+    margin: 15px auto ;
+    padding: 5px 5px 8px;
+    width: 60%;
+    text-align: center;
+}

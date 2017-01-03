@@ -1,0 +1,59 @@
+.con-login-mess{
+
+    width: 300px;
+    margin: 25px auto 0;
+
+}
+.con-login-mess label{
+    display: inline-block;
+    width: 84px;
+
+    font-size: 24px;
+    line-height: 1.5;
+    color: #747474;
+
+    text-align: right;
+}
+.con-login-mess #user,.con-login-mess  #passw{
+    float: right;
+    margin: 0 10px;
+
+    width: 196px;
+    height: 32px;
+
+    border: 0;
+    border-bottom: 2px solid #58eeff;
+    outline: none;
+
+    font-size: 20px;
+    line-height: 23px;
+    color: #747474;
+
+    background: transparent;
+
+}
+
+.con-login-mess div{  padding: 20px 0 0;  }
+
+.forgot{
+    margin: 5px 0;
+    float: right;
+    color: #ffabab;
+}
+
+.submit{
+    display: block;
+    margin: 50px auto 0;
+    padding: 5px;
+
+    width: 60%;
+
+    border: 0;
+    font-size: 25px;
+    font-weight: bold;
+    border-radius: 5px;
+    line-height: 1.5;
+    color: #ffffff;
+
+    background: #ffabab;
+}

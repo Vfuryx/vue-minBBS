@@ -1,0 +1,66 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: "Microsoft YaHei UI Light";
+}
+
+body , html{
+    min-width: 1024px;
+}
+
+ul li {  list-style-type: none;  }
+
+.clearfix:before, .clearfix:after {
+    content: "";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+    overflow: hidden;
+}
+.clearfix {  zoom: 1;  }
+.float-l {  float: left;  }
+.float-r {  float: right;  }
+
+a{  text-decoration: none;  }
+
+
+header .top-nav{
+    min-width: 1024px;
+    position: absolute;
+    width: 100%;
+
+    background: rgba(0,0,0,0.4);
+}
+
+header .top-nav ul>li a,.welcom{
+    box-sizing: border-box;
+    display: block;
+    padding: 6px;
+
+    border-bottom: 3px solid transparent;
+    border-top: 3px solid transparent;
+
+    font-size: 16px;
+
+    color: #fff;
+}
+
+header .top-nav ul>li a:hover{  border-bottom: 3px solid #d102f3;  }
+header .top-nav ul>li #active{  border-bottom: 3px solid #d102f3;  }
+header .top-nav ul>li a.router-link-active{  border-bottom: 3px solid #d102f3;  }
+
+.top-login a,.welcom{
+    float: left;
+}
+
+.banner{
+    height: 400px;
+
+    background: url("http://7xr3sq.com1.z0.glb.clouddn.com/710365.jpg") no-repeat center 20%;
+    background-size: cover;
+}
+
+
+

@@ -1,0 +1,79 @@
+.register{
+    position: absolute;
+    top: 200px;
+    left:50%;
+    padding: 10px;
+    margin-left:-202px;
+
+    border-radius: 10px;
+
+    background: rgba(249, 249, 249, 0.3);
+}
+
+.register-from{
+
+    padding: 50px ;
+    border-radius: 10px;
+
+    background: rgba(243, 243, 243, 0.6);
+}
+.register-from table tr td{
+    padding: 10px 0;
+}
+
+
+
+.register-from label{
+    display: block;
+    width: 84px;
+
+    font-size: 24px;
+    line-height: 1.5;
+    color: #747474;
+    text-align: right;
+    text-overflow: clip;
+}
+
+.register-from .register-input-text{
+    margin: 0 5px;
+    height: 32px;
+
+    border: 0;
+    border-bottom: 2px solid #58eeff;
+    outline: none;
+
+    font-size: 20px;
+    line-height: 23px;
+    color: #747474;
+
+    background: transparent;
+
+}
+
+.submit{
+    display: block;
+    margin: 50px auto 0;
+    padding: 5px;
+
+    width: 60%;
+
+    border: 0;
+    font-size: 25px;
+    font-weight: bold;
+    border-radius: 5px;
+    line-height: 1.5;
+    color: #ffffff;
+
+    background: #ffabab;
+}
+
+
+.checkuser{
+    position: absolute;
+    right: 0;
+    margin-right: 60px ;
+    margin-top: 48px;
+    width: 100px;
+    font-size: 16px;
+    color: rgb(176, 33, 233);
+}
