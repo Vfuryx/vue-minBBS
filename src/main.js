@@ -7,6 +7,7 @@ import Register from './components/Register'
 import Info from './components/Info'
 import module from './components/module'
 import PrivateLetter from './components/PrivateLetter'
+import OtherUserInfo from './components/OtherUserInfo'
 import Power from './components/Power'
 import store from './store'
 
@@ -24,7 +25,7 @@ const routes = [{
 },{
   path : '/',
   meta: { auth: false },
-  component: Login
+  component: Home
 },{
   path : '/register',
   component: Register

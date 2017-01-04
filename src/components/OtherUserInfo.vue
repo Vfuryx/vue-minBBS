@@ -10,15 +10,10 @@
                     <p v-show="userInfo.tele" class="tele" :title="userInfo.tele">{{userInfo.tele}}</p>
                     <div v-show="userInfo.intro" class="intro" :title="userInfo.intro">{{userInfo.intro}}</div>
                 </section>
-                <router-link class="powersub" v-if="userInfo.power<=1" to="/info//power" >
-                    权限管理
-                </router-link>
-                <router-link class="powersub" to="/info/module" >
-                    留言管理
-                </router-link>
-                <router-link class="powersub" to="/info/private_letter" >
-                    私信管理
-                </router-link>
+                <form  name="myform" action="index.php?c=Index&p=front&a=post" method="post" >
+                <textarea v-model="userPost" id="userpost" class="userpost" name="userpost" value="userPost"></textarea>
+                <button class="submit" @click.prevent="postLY(userPost)" >发送私信</button>
+            </form>
             </div>
         </aside>
         <div class="main-right">
@@ -29,9 +24,11 @@
         </div>
     </div>
 </template>
+
 <style>
-    @import '../css/info.css'
+    @import '../css/info.css';
 </style>
+
 <script>
 import page from './page'
 import {mapState,mapActions} from 'vuex'

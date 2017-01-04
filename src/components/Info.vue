@@ -16,7 +16,7 @@
                 <router-link class="powersub" to="/info/module" >
                     留言管理
                 </router-link>
-                <router-link class="powersub" to="/info/private_letter" >
+                <router-link class="powersub" to="/info/privateletter" >
                     私信管理
                 </router-link>
             </div>

@@ -7,6 +7,7 @@
             <h5 class='post-user-time'>{{list.posttime}}</h5>
             <button v-if="loginUser != '游客' && isModule " class='delete' href='#' @click.prevent="deletely(list.id)" ></button>
         </article>
+        <div>111</div>
     </div>
 </template>
 <style>

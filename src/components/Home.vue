@@ -2,7 +2,7 @@
     <div class="main clearfix">
         <aside class="main-left">
             <div class="user" >
-                <router-link v-if=" loginUser=='游客' " to="/" >
+                <router-link v-if=" loginUser=='游客' " to="/info/module" >
                     <img  class="user-pic" src="http://7xr3sq.com1.z0.glb.clouddn.com/photo.jpg" alt="">
                 </router-link>
                 <router-link v-else to="/info/module" >

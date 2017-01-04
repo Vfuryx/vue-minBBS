@@ -13,7 +13,12 @@ const state = {
     userPowerInfos:'',
 
     //留言
-    lists: '',
+    lists: [
+        {'usernameid' : '123' , 'mess' : '11111111111111111', 'posttime' : '12121212'}, 
+        {'usernameid' : '123' , 'mess' : '11111111111111111', 'posttime' : '12121212'}, 
+        {'usernameid' : '123' , 'mess' : '11111111111111111', 'posttime' : '12121212'},  
+        {'usernameid' : '123' , 'mess' : '11111111111111111', 'posttime' : '12121212'}   
+    ],
 
     // 分页
     totalRecords: 1,//总页数

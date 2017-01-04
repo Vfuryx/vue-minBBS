@@ -1,7 +1,9 @@
 <template>
     <div>
         <article class='con-module' v-for="list in lists">
-            <img class='post-user-pic' src='http://7xr3sq.com1.z0.glb.clouddn.com/photo.jpg' alt=''>
+            <router-link to="/otheruserinfo/sendprivateletter">
+              <img class='post-user-pic' src='http://7xr3sq.com1.z0.glb.clouddn.com/photo.jpg' alt=''>
+            </router-link>
             <h3 class='post-user-name'>{{list.usernameid}}</h3>
             <p class='post-user-mess'>{{list.mess}}</p>
             <h5 class='post-user-time'>{{list.posttime}}</h5>
