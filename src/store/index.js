@@ -347,9 +347,158 @@ const actions = {
           }
       })
   },
+  inputVote ({ commit , state }, param) {
+      Axios.post(
+      'index.php?c=Vote&p=front&a=inputVote',{
+        user: state.loginUser,
+        title: param.title,
+        vote_option1: param.vote_option1,
+        vote_option2: param.vote_option2,
+        vote_option3: param.vote_option3,
+        vote_option4: param.vote_option4,
+        vote_option5: param.vote_option5,
+      }
+    ).then((response) => {
+      if(response.data){
+        alert('成功')
+        return 1
+      }else {
+        alert('失败')
+      }
+    })
+  },
+  getVoteList ({ commit , state }){
+       //先获取分页数
+    Axios.get('index.php',{
+      params: {
+        c: "Vote" ,
+        p: "front" ,
+        a: "getVoteListPage",
+        user: state.loginUser,
+      }
+    }).then((response) => {
+        commit('getTotalRecord',response.data)
+              //再获取数据
+        Axios.get('index.php', {
+        params: {
+           c: "Vote",
+           p: "front",
+           a: "getVoteList",
+           totalRecord: response.data,
+           user: state.loginUser,
+           cur: state.curPage
+         }
+         }).then((response) => {
+           if (response.data) {
+               //alert('ok')
+               commit('getPublicList', response.data)
+           } else {
+             alert('失败')
+          }
+      })
+    })
+  },
+  sendVoteOption ({ commit , state }, param) {
+      Axios.post(
+      'index.php?c=Vote&p=front&a=sendVoteOption',{
+        user: state.loginUser,
+        vote_id: param.vote_id,
+        item_name: param.item_name
+      }
+    ).then((response) => {
+      if(response.data){
+          return 1
+      }else {
+        alert('失败')
+        return 0
+      }
+    })
+  },
+  getVoteListsEnd ({ commit , state }){
+       //先获取分页数
+    Axios.get('index.php',{
+      params: {
+        c: "Vote" ,
+        p: "front" ,
+        a: "getVoteListsEndPage",
+        user: state.loginUser,
+      }
+    }).then((response) => {
+        commit('getTotalRecord',response.data)
+              //再获取数据
+        Axios.get('index.php', {
+        params: {
+           c: "Vote",
+           p: "front",
+           a: "getVoteListsEnd",
+           totalRecord: response.data,
+           user: state.loginUser,
+           cur: state.curPage
+         }
+         }).then((response) => {
+           if (response.data) {
+               //alert('ok')
+               commit('getPublicList', response.data)
+           } else {
+             alert('失败')
+          }
+      })
+    })
+  },
+  getColVoteLists ({ commit , state }) {
+   //先获取分页数
+    Axios.get('index.php',{
+      params: {
+        c: "Vote" ,
+        p: "front" ,
+        a: "getColVoteListsPage",
+        user: state.loginUser,
+      }
+    }).then((response) => {
+        commit('getTotalRecord',response.data)
+              //再获取数据
+        Axios.get('index.php', {
+        params: {
+           c: "Vote",
+           p: "front",
+           a: "getColVoteLists",
+           totalRecord: response.data,
+           user: state.loginUser,
+           cur: state.curPage
+         }
+         }).then((response) => {
+           if (response.data) {
+               //alert('ok')
+               commit('getPublicList', response.data)
+           } else {
+             alert('失败')
+          }
+      })
+    })
+  },
+    //删除私信
+  delVote ({ commit , state }, param){
+      Axios.get(
+          'index.php',{
+          params: {
+             c: "Vote",
+             p: "front",
+             a: "delVote",
+             user: state.loginUser,
+             id: param
+          }
+      }).then((response) => {
+          if(response.data){
+              alert('成功')
+              return 1
+          }else{
+              alert('失败')
+              return 0
+          }
+      })
+  },
+
 }
-
-
 
 
 export default new Vuex.Store({

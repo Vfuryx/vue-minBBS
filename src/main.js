@@ -10,6 +10,9 @@ import PrivateLetter from './components/PrivateLetter'
 import OtherUserInfo from './components/OtherUserInfo'
 import Power from './components/Power'
 import Vote from './components/Vote'
+import InputVote from './components/InputVote'
+import VoteList from './components/VoteList'
+import VoteListsEnd from'./components/VoteListsEnd'
 import store from './store'
 
 Vue.use(VueRouter)
@@ -56,12 +59,28 @@ const routes = [{
     path : 'privateletter',
     name : 'privateletter',
     component: PrivateLetter
-  }
-  ]
+  },{
+    path: 'colvotelists',
+    name: 'colvotelists',
+    component: VoteListsEnd
+  }]
 },{
   path: '/vote',
   name: 'vote',
-  component: Vote
+  component: Vote,
+  children: [{
+    path: 'inputvote',
+    name: 'inputvote',
+    component: InputVote
+  },{
+    path: 'votelist',
+    name: 'votelist',
+    component: VoteList
+  },{
+    path: 'votelistsend',
+    name: 'votelistsend',
+    component: VoteListsEnd
+  }]
 }
 ]
 

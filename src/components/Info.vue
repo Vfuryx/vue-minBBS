@@ -19,6 +19,9 @@
                 <router-link class="powersub" to="/info/privateletter" >
                     私信管理
                 </router-link>
+                <router-link class="powersub" to="/info/colvotelists" >
+                    投票管理
+                </router-link>
             </div>
         </aside>
         <div class="main-right">
@@ -33,6 +36,7 @@
     @import '../css/info.css';
 </style>
 <script>
+
 import page from './page'
 import {mapState,mapActions} from 'vuex'
 export default{

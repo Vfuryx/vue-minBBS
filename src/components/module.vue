@@ -5,7 +5,7 @@
             <h3 class='post-user-name'>{{list.usernameid}}</h3>
             <p class='post-user-mess'>{{list.mess}}</p>
             <h5 class='post-user-time'>{{list.posttime}}</h5>
-            <button v-if="loginUser != '游客' && isModule " class='delete' href='#' @click.prevent="deletely(list.id)" ></button>
+            <button v-if="loginUser != '游客' && isModule " class='delete' href='#' @click.prevent="delVote(list.id)" ></button>
         </article>
     </div>
 </template>
@@ -31,7 +31,7 @@ export default{
   },
   methods: {
     ...mapActions(['delly','getuserly','getList']),
-    deletely: function (id) {
+    delVote: function (id) {
         if(this.delly(id)){
           this.getuserly()
         }
