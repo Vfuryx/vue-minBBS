@@ -225,46 +225,74 @@ const actions = {
           }
       })
   },
-  getPrivateLetter ({ commit , state }) {
+  getPrivateLetter ({ commit , state }, param) {
     //先获取分页数
     Axios.get('index.php',{
       params: {
-        c: "UserInfo" ,
+        c: "Send" ,
         p: "front" ,
         a: "getPrivateLetterPage",
-        loginuser: state.loginUser
+        user: state.loginUser,
+        othuser: param
       }
-    }).then(
-      //再获取数据
-      Axios.get('index.php', {
+    }).then((response) => {
+        commit('getTotalRecord',response.data)
+              //再获取数据
+        Axios.get('index.php', {
         params: {
-          c: "UserInfo",
-          p: "front",
-          a: "getPrivateLetter",
-          user: state.loginUser
-        }
-      }).then((response) => {
-        if (response.data) {
-
-        } else {
-          alert('失败')
-        }
+           c: "Send",
+           p: "front",
+           a: "getPrivateLetter",
+           totalRecord: response.data,
+           user: state.loginUser,
+           othuser: param,
+           cur: state.curPage
+         }
+         }).then((response) => {
+           if (response.data) {
+               alert('ok')
+               commit('getPublicList', response.data)
+           } else {
+             alert('失败')
+          }
       })
-    )
+    })
   },
   sendPrivateLetter ({commit , state }, param){
     Axios.post(
-      'index.php?c=UserInfo&p=front&a=sendPrivateLetter',{
+      'index.php?c=Send&p=front&a=setsend',{
+        otheruser: state.loginUser,
         user: state.loginUser,
         privateletter: param
       }
     ).then((response) => {
       if(response.data){
-
+        alert('成功')
       }else {
         alert('失败')
       }
     })
+  },
+  getotheruserinfo ({commit , state }, param ){
+       Axios.get(
+        'index.php',{
+            params: {
+                c: "UserInfo" ,
+                p: "front" ,
+                a: "getotheruserinfo" ,
+                user: state.loginUser,
+                othuser: param
+            }
+        }
+      ).then((response) => {
+          if(response.data){
+              state.userInfo = response.data
+              alert('成功')
+          }else{
+              alert('失败')
+          }
+      })
+            
   }
 }
 

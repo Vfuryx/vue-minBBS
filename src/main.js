@@ -34,7 +34,7 @@ const routes = [{
   name: 'otheruserinfo',
   component: OtherUserInfo,
   children:[{
-    path: 'sendprivateletter',
+    path: 'sendprivateletter/:othuser',
     name: 'sendprivateletter',
     component: PrivateLetter
   }]

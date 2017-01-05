@@ -10,7 +10,7 @@
                     <p v-show="userInfo.tele" class="tele" :title="userInfo.tele">{{userInfo.tele}}</p>
                     <div v-show="userInfo.intro" class="intro" :title="userInfo.intro">{{userInfo.intro}}</div>
                 </section>
-                <router-link class="powersub" v-if="userInfo.power<=1" to="/info//power" >
+                <router-link class="powersub" v-if="userInfo.power<=1" to="/info/power" >
                     权限管理
                 </router-link>
                 <router-link class="powersub" to="/info/module" >
@@ -30,7 +30,7 @@
     </div>
 </template>
 <style>
-    @import '../css/info.css'
+    @import '../css/info.css';
 </style>
 <script>
 import page from './page'
@@ -45,14 +45,17 @@ export default{
       //this.getuserly()
     },
     computed: {
-        ...mapState(['loginUser','userInfo'])
+        ...mapState(['curPage','loginUser','userInfo'])
     },
     methods: {
-       ...mapActions(['getuserinfo'])
+       ...mapActions(['getuserinfo','getpl'])
     },
     components:{
        page,
        module
+    },
+    watch: {
+      curPage: 'getpl'
     }
 }
 </script>

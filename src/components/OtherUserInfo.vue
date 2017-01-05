@@ -3,7 +3,7 @@
         <aside class="main-left">
             <div class="user">
                 <img class="user-pic" src="http://7xr3sq.com1.z0.glb.clouddn.com/photo.jpg" alt="">
-                <h2 class="user-name">{{ loginUser }}</h2>
+                <h2 class="user-name">{{ this.$route.params.othuser }}</h2>
                 <section class="info">
                     <p v-show="userInfo.score" class="score" :title="userInfo.score">{{userInfo.score}}</p>
                     <p v-show="userInfo.email" class="email" :title="userInfo.email">{{userInfo.email}}</p>
@@ -35,21 +35,37 @@ import {mapState,mapActions} from 'vuex'
 export default{
     data(){
         return{
+            userPost: ''
         }
     },
     mounted () {
-      this.getuserinfo()
+        //alert('121212')
+      this.getotheruserinfo(this.$route.params.othuser)
       //this.getuserly()
     },
     computed: {
-        ...mapState(['loginUser','userInfo'])
+        ...mapState(['loginUser','userInfo','curPage'])
     },
     methods: {
-       ...mapActions(['getuserinfo'])
+       ...mapActions(['getotheruserinfo','sendPrivateLetter','getPrivateLetter']),
+       aaaaa () {
+           alert(1111)
+           this.getPrivateLetter(this.$route.params.othuser) 
+       }
     },
     components:{
        page,
        module
+    },
+    watch: {
+    
+    // if( $this.route.name=="sendprivateletter"){
+    //     //alert(this.$route.params.othuser)
+    //     this.getPrivateLetter(this.$route.params.othuser) 
+    // }
+    // }else{
+      curPage: "aaaaa"
+    // }
     }
 }
 </script>

@@ -24,12 +24,12 @@ export default{
     ...mapState(['totalRecords','curPage'])
   },
   methods: {
-    ...mapActions(['getcp','getpl'])
+    ...mapActions(['getcp','getpl','getPrivateLetter'])
   },
   components: {
   },
   watch: {
-    curPage: 'getpl'
+      //curPage: 'getpl'
   }
 }
 </script>

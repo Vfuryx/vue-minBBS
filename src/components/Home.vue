@@ -24,16 +24,14 @@
     </div>
 </template>
 <style>
-@import '../css/index.css'
+@import '../css/index.css';
 </style>
 <script>
 import page from './page'
 import module from './module'
 import {mapState,mapActions} from 'vuex'
 export default{
- computed: {
-   ...mapState(['loginUser'])
- },
+
  data(){
      return{
         userPost: ''
@@ -41,6 +39,9 @@ export default{
  },
  mounted () {
     this.getpl()
+ },
+  computed: {
+   ...mapState(['curPage','loginUser'])
  },
  methods: {
      ...mapActions(['getpl','postly']),
@@ -54,6 +55,9 @@ export default{
  components:{
      page,
      module
- }
+ },
+  watch: {
+      curPage: 'getpl'
+  }
 }
 </script>

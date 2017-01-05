@@ -1,9 +1,7 @@
 <template>
     <div>
         <article class='con-module' v-for="list in lists">
-            <router-link to="/otheruserinfo/sendprivateletter">
-              <img class='post-user-pic' src='http://7xr3sq.com1.z0.glb.clouddn.com/photo.jpg' alt=''>
-            </router-link>
+            <img @click="gotoOth(list.usernameid)" class='post-user-pic' src='http://7xr3sq.com1.z0.glb.clouddn.com/photo.jpg' alt=''>
             <h3 class='post-user-name'>{{list.usernameid}}</h3>
             <p class='post-user-mess'>{{list.mess}}</p>
             <h5 class='post-user-time'>{{list.posttime}}</h5>
@@ -36,6 +34,9 @@ export default{
         if(this.delly(id)){
           this.getuserly()
         }
+    },
+    gotoOth (othuser) {
+        this.$router.replace({ path: '/otheruserinfo/sendprivateletter/'+othuser })
     }
   },
   components: {
