@@ -24,19 +24,23 @@ export default{
   },
   created() {
     if(this.$route.name == 'module'){
+      this.getList({})
       this.getuserly()
       setTimeout(()=>{this.isModule=1},100)
     }
   },
   methods: {
-    ...mapActions(['delly','getuserly']),
+    ...mapActions(['delly','getuserly','getList']),
     deletely: function (id) {
         if(this.delly(id)){
           this.getuserly()
         }
     },
     gotoOth (othuser) {
+      if(othuser!=this.loginUser){
         this.$router.replace({ path: '/otheruserinfo/sendprivateletter/'+othuser })
+      }
+        
     }
   },
   components: {

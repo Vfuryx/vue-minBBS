@@ -9,6 +9,7 @@ import module from './components/module'
 import PrivateLetter from './components/PrivateLetter'
 import OtherUserInfo from './components/OtherUserInfo'
 import Power from './components/Power'
+import Vote from './components/Vote'
 import store from './store'
 
 Vue.use(VueRouter)
@@ -25,6 +26,7 @@ const routes = [{
 },{
   path : '/',
   meta: { auth: false },
+  redirect: { name: 'home' },
   component: Home
 },{
   path : '/register',
@@ -56,11 +58,11 @@ const routes = [{
     component: PrivateLetter
   }
   ]
+},{
+  path: '/vote',
+  name: 'vote',
+  component: Vote
 }
-,{
-  path : '/',
-  redirect: { name: 'home' }
-},
 ]
 
 

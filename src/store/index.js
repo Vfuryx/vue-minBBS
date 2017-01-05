@@ -37,6 +37,9 @@ const mutations = {
 
 
 const actions = {
+  getList ({ commit }, i) {
+      commit('getPublicList', i)
+  },
   getlu ({ commit }, i) {
       sessionStorage.setItem("loguser", i );
       commit('getloginUser', i)
@@ -250,7 +253,38 @@ const actions = {
          }
          }).then((response) => {
            if (response.data) {
-               alert('ok')
+               //alert('ok')
+               commit('getPublicList', response.data)
+           } else {
+             alert('失败')
+          }
+      })
+    })
+  },
+  getMyPrivateLetter ({ commit , state }) {
+    //先获取分页数
+    Axios.get('index.php',{
+      params: {
+        c: "Send" ,
+        p: "front" ,
+        a: "getMyPrivateLetterPage",
+        user: state.loginUser,
+      }
+    }).then((response) => {
+        commit('getTotalRecord',response.data)
+              //再获取数据
+        Axios.get('index.php', {
+        params: {
+           c: "Send",
+           p: "front",
+           a: "getMyPrivateLetter",
+           totalRecord: response.data,
+           user: state.loginUser,
+           cur: state.curPage
+         }
+         }).then((response) => {
+           if (response.data) {
+               //alert('ok')
                commit('getPublicList', response.data)
            } else {
              alert('失败')
@@ -261,9 +295,9 @@ const actions = {
   sendPrivateLetter ({commit , state }, param){
     Axios.post(
       'index.php?c=Send&p=front&a=setsend',{
-        otheruser: state.loginUser,
+        otheruser: param.othuser,
         user: state.loginUser,
-        privateletter: param
+        privateletter: param.privateletter
       }
     ).then((response) => {
       if(response.data){
@@ -287,13 +321,32 @@ const actions = {
       ).then((response) => {
           if(response.data){
               state.userInfo = response.data
-              alert('成功')
+              //alert('成功')
           }else{
               alert('失败')
           }
       })
             
-  }
+  },
+    //删除私信
+  delSPL ({ commit , state }, param){
+      Axios.get(
+          'index.php',{
+          params: {
+             c: "Send",
+             p: "front",
+             a: "delSPL",
+             user: state.loginUser,
+             id: param
+          }
+      }).then((response) => {
+          if(response.data){
+              alert('成功')
+          }else{
+              alert('失败')
+          }
+      })
+  },
 }
 
 

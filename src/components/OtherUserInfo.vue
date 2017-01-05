@@ -10,9 +10,9 @@
                     <p v-show="userInfo.tele" class="tele" :title="userInfo.tele">{{userInfo.tele}}</p>
                     <div v-show="userInfo.intro" class="intro" :title="userInfo.intro">{{userInfo.intro}}</div>
                 </section>
-                <form  name="myform" action="index.php?c=Index&p=front&a=post" method="post" >
-                <textarea v-model="userPost" id="userpost" class="userpost" name="userpost" value="userPost"></textarea>
-                <button class="submit" @click.prevent="postLY(userPost)" >发送私信</button>
+                <form  name="myform" action="" method="post" >
+                <textarea v-model="send" id="userpost" class="userpost" name="send" value="send"></textarea>
+                <button class="submit" @click.prevent="setSend(send)" >发送私信</button>
             </form>
             </div>
         </aside>
@@ -35,7 +35,7 @@ import {mapState,mapActions} from 'vuex'
 export default{
     data(){
         return{
-            userPost: ''
+            send: ''
         }
     },
     mounted () {
@@ -47,10 +47,15 @@ export default{
         ...mapState(['loginUser','userInfo','curPage'])
     },
     methods: {
-       ...mapActions(['getotheruserinfo','sendPrivateLetter','getPrivateLetter']),
-       aaaaa () {
-           alert(1111)
+       ...mapActions(['getotheruserinfo','sendPrivateLetter','getPrivateLetter','sendPrivateLetter']),
+       changeCurPage () {
            this.getPrivateLetter(this.$route.params.othuser) 
+       },
+       setSend (data){
+            if(this.sendPrivateLetter({ othuser : this.$route.params.othuser , privateletter : data})){
+                this.getPrivateLetter(this.$route.params.othuser) 
+            }
+            this.send = ''
        }
     },
     components:{
@@ -58,14 +63,7 @@ export default{
        module
     },
     watch: {
-    
-    // if( $this.route.name=="sendprivateletter"){
-    //     //alert(this.$route.params.othuser)
-    //     this.getPrivateLetter(this.$route.params.othuser) 
-    // }
-    // }else{
-      curPage: "aaaaa"
-    // }
+      curPage: "changeCurPage"
     }
 }
 </script>

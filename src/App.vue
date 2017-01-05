@@ -3,10 +3,12 @@
     <header>
       <nav class="top-nav">
         <ul class="clearfix">
-          <li class="float-l">
+          <li class="float-l top-index">
             <router-link  to="/home" >主页</router-link>
+            <router-link  to="/vote" >投票</router-link>
           </li>
           <li v-if=" loginUser=='游客' " class="float-r top-login">
+
             <router-link  to="/register" >注册</router-link>
             <router-link  to="/login" >登录</router-link>
           </li>

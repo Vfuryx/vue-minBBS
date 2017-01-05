@@ -5,7 +5,7 @@
             <h3 class='post-user-name'>{{list.sendfrom}}</h3>
             <p class='post-user-mess'>{{list.content}}</p>
             <h5 class='post-user-time'>{{list.sendtime}}</h5>
-            <button v-if="loginUser != '游客' && isModule " class='delete' href='#' @click.prevent="deletely(list.id)" ></button>
+            <button v-if="loginUser != '游客' && isModule " class='delete' href='#' @click.prevent="deleteSPL(list.id)" ></button>
         </article>
     </div>
 </template>
@@ -23,24 +23,24 @@ export default{
     ...mapState(['totalRecords','curPage','lists','loginUser'])
   },
   created() {
-    if(this.$route.name == 'module' || this.$route.name == 'privateletter'){
-      //this.getuserly()
-      setTimeout(()=>{this.isModule=1},100)
-    }
-   
-    if(this.$route.name=="sendprivateletter"){
+    if(this.$route.name == 'privateletter'){
+        this.getMyPrivateLetter()
+        setTimeout(()=>{this.isModule=1},100)
+    }else if(this.$route.name=="sendprivateletter"){
         //alert(this.$route.params.othuser)
+        this.getcp(1);
+        this.getList({})
         this.getPrivateLetter(this.$route.params.othuser) 
     }
 
   },
   methods: {
-    ...mapActions(['getPrivateLetter']),
-    // deletely: function (id) {
-    //     if(this.delly(id)){
-    //       this.getuserly()
-    //     }
-    // }
+    ...mapActions(['getPrivateLetter','getcp','getMyPrivateLetter','getList','delSPL']),
+    deleteSPL: function (id) {
+        if(this.delSPL(id)){
+          this.getMyPrivateLetter()
+        }
+    }
   },
   components: {
   }

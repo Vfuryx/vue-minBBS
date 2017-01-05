@@ -48,14 +48,21 @@ export default{
         ...mapState(['curPage','loginUser','userInfo'])
     },
     methods: {
-       ...mapActions(['getuserinfo','getpl'])
+       ...mapActions(['getuserinfo','getMyPrivateLetter','getuserly']),
+       changeCurPage () {
+           if(this.$route.name == 'module'){
+               this.getuserly()
+           }else if(this.$route.name == 'privateletter'){
+               this.getMyPrivateLetter()
+           }
+       }
     },
     components:{
        page,
        module
     },
     watch: {
-      curPage: 'getpl'
+      curPage: 'changeCurPage'
     }
 }
 </script>

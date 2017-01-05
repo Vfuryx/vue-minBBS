@@ -51,7 +51,7 @@ header .top-nav ul>li a:hover{  border-bottom: 3px solid #d102f3;  }
 header .top-nav ul>li #active{  border-bottom: 3px solid #d102f3;  }
 header .top-nav ul>li a.router-link-active{  border-bottom: 3px solid #d102f3;  }
 
-.top-login a,.welcom{
+.top-login a,.top-index a,.welcom{
     float: left;
 }
 
