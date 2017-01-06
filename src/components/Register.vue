@@ -34,7 +34,7 @@
     </div>
 </template>
 <style>
-@import '../css/register.css'
+@import '../css/register.css';
 </style>
 <script>
 import Axios from 'axios'

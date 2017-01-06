@@ -16,7 +16,7 @@ export default{
      ...mapState(['curPage','lists','loginUser'])
   },
   created() {
-    if(this.$route.name == 'votelist'){
+    if(this.$route.name == 'votelist'&&this.loginUser!='游客'){
       this.getList({})
       this.getVoteList()
     }

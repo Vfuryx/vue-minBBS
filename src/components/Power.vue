@@ -15,7 +15,7 @@
     </div>
 </template>
 <style>
-@import '../css/power.css'
+@import '../css/power.css';
 </style>
 <script>
 import {mapState,mapActions} from 'vuex'

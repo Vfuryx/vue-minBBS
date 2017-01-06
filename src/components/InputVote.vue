@@ -64,12 +64,13 @@ export default{
             return false
         }
         if(this.inputVote({title: title , vote_option1: vote_option1, vote_option2: vote_option2, vote_option3: vote_option3, vote_option4: vote_option4, vote_option5: vote_option5})){
-             title = ""
-             vote_option1 = ""
-             vote_option2 = ""
-             vote_option3 = ""
-             vote_option4 = ""
-             vote_option5 = ""
+             myform.title.value = ""
+             myform.vote_option1.value = ""
+             myform.vote_option2.value = ""
+             myform.vote_option3.value = ""
+             myform.vote_option4.value = ""
+             myform.vote_option5.value = ""
+             this.$router.replace({ path: '/vote/votelist' })
         }
         
       }

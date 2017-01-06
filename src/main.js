@@ -91,13 +91,15 @@ const router = new VueRouter({
   routes
 })
 
-router.afterEach((to, from, next) => {
+router.beforeEach((to, from, next) => {
   document.title = to.name
+  next()
 })
 
+
 const app = new Vue({
-  el: '#app',
+  //el: '#app',
   router,
   store,
   ...App
-})
+}).$mount('#app')

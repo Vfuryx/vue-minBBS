@@ -37,7 +37,7 @@ export default{
         }
     },
     gotoOth (othuser) {
-      if(othuser!=this.loginUser){
+      if(othuser!=this.loginUser&&othuser!='游客'&&this.loginUser!='游客'){
         this.$router.replace({ path: '/otheruserinfo/sendprivateletter/'+othuser })
       }
         

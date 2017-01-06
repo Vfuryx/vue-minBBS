@@ -40,10 +40,12 @@ export default{
         return{
         }
     },
-    // mounted () {
-    //   //this.getuserinfo()
-    //   //this.getuserly()
-    // },
+    mounted () {
+     if(this.loginUser=='游客'){
+        alert('请登录')
+        this.$router.replace({ path: '/login' })
+     }
+    },
     computed: {
         ...mapState(['curPage','loginUser','userInfo'])
     },

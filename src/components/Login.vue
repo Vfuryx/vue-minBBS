@@ -16,7 +16,7 @@
     </div>
 </template>
 <style>
-@import '../css/login.css'
+@import '../css/login.css';
 </style>
 <script>
 import Axios from 'axios'

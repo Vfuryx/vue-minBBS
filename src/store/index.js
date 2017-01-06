@@ -2,7 +2,7 @@ import Vue from 'vue' //生产环境需要注释
 import Vuex from 'vuex'
 import Axios from 'axios'
 
-Vue.use(Vuex)       //生产环境需要注释
+Vue.use(Vuex)
 
 const state = {
     // 登录信息
@@ -13,12 +13,7 @@ const state = {
     userPowerInfos:'',
 
     //留言
-    lists: [
-        {'usernameid' : '123' , 'mess' : '11111111111111111', 'posttime' : '12121212'}, 
-        {'usernameid' : '123' , 'mess' : '11111111111111111', 'posttime' : '12121212'}, 
-        {'usernameid' : '123' , 'mess' : '11111111111111111', 'posttime' : '12121212'},  
-        {'usernameid' : '123' , 'mess' : '11111111111111111', 'posttime' : '12121212'}   
-    ],
+    lists: [],
 
     // 分页
     totalRecords: 1,//总页数
@@ -326,7 +321,7 @@ const actions = {
               alert('失败')
           }
       })
-            
+
   },
     //删除私信
   delSPL ({ commit , state }, param){
@@ -360,10 +355,11 @@ const actions = {
       }
     ).then((response) => {
       if(response.data){
-        alert('成功')
+        //alert('成功')
         return 1
       }else {
         alert('失败')
+        return 0
       }
     })
   },
