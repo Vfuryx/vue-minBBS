@@ -10,19 +10,19 @@
                     <p v-show="userInfo.tele" class="tele" :title="userInfo.tele">{{userInfo.tele}}</p>
                     <div v-show="userInfo.intro" class="intro" :title="userInfo.intro">{{userInfo.intro}}</div>
                 </section>
-                <router-link class="powersub" to="/vote/votelist" >
+                <router-link class="powersub" to="/vote/votelist">
                     未投票
                 </router-link>
-                <router-link class="powersub" to="/vote/inputvote" >
+                <router-link class="powersub" to="/vote/inputvote">
                     发表投票
                 </router-link>
-                <router-link class="powersub" to="/vote/votelistsend" >
+                <router-link class="powersub" to="/vote/votelistsend">
                     已投票
                 </router-link>
             </div>
         </aside>
         <div class="main-right">
-            <section  class="main-content">
+            <section class="main-content">
                 <router-view></router-view>
                 <page></page>
             </section>
@@ -33,38 +33,34 @@
     @import '../css/info.css';
 </style>
 <script>
-import page from './page'
-import {mapState,mapActions} from 'vuex'
-export default{
-    data(){
-        return{
+    import page from './page'
+    import { mapState, mapActions } from 'vuex'
+    export default {
+        data() {
+            return {
+            }
+        },
+        mounted() {
+        },
+        computed: {
+            ...mapState(['curPage', 'loginUser', 'userInfo'])
+        },
+        methods: {
+            ...mapActions(['getuserinfo', 'getMyPrivateLetter', 'getuserly']),
+            changeCurPage() {
+                //    if(this.$route.name == 'module'){
+                //        this.getuserly()
+                //    }else if(this.$route.name == 'privateletter'){
+                //        this.getMyPrivateLetter()
+                //    }
+            }
+        },
+        components: {
+            page
+            //module
+        },
+        watch: {
+            curPage: 'changeCurPage'
         }
-    },
-    mounted () {
-     if(this.loginUser=='游客'){
-        alert('请登录')
-        this.$router.replace({ path: '/login' })
-     }
-    },
-    computed: {
-        ...mapState(['curPage','loginUser','userInfo'])
-    },
-    methods: {
-       ...mapActions(['getuserinfo','getMyPrivateLetter','getuserly']),
-       changeCurPage () {
-        //    if(this.$route.name == 'module'){
-        //        this.getuserly()
-        //    }else if(this.$route.name == 'privateletter'){
-        //        this.getMyPrivateLetter()
-        //    }
-       }
-    },
-    components:{
-       page
-       //module
-    },
-    watch: {
-      curPage: 'changeCurPage'
     }
-}
 </script>

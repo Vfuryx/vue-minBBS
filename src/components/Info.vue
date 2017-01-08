@@ -10,22 +10,22 @@
                     <p v-show="userInfo.tele" class="tele" :title="userInfo.tele">{{userInfo.tele}}</p>
                     <div v-show="userInfo.intro" class="intro" :title="userInfo.intro">{{userInfo.intro}}</div>
                 </section>
-                <router-link class="powersub" v-if="userInfo.power<=1" to="/info/power" >
+                <router-link class="powersub" v-if="userInfo.power<=1" to="/info/power">
                     权限管理
                 </router-link>
-                <router-link class="powersub" to="/info/module" >
+                <router-link class="powersub" to="/info/module">
                     留言管理
                 </router-link>
-                <router-link class="powersub" to="/info/privateletter" >
+                <router-link class="powersub" to="/info/privateletter">
                     私信管理
                 </router-link>
-                <router-link class="powersub" to="/info/colvotelists" >
+                <router-link class="powersub" to="/info/colvotelists">
                     投票管理
                 </router-link>
             </div>
         </aside>
         <div class="main-right">
-            <section  class="main-content">
+            <section class="main-content">
                 <router-view></router-view>
                 <page></page>
             </section>
@@ -36,7 +36,6 @@
     @import '../css/info.css';
 </style>
 <script>
-
 import page from './page'
 import {mapState,mapActions} from 'vuex'
 export default{

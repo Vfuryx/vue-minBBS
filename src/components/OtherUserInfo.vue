@@ -10,14 +10,14 @@
                     <p v-show="userInfo.tele" class="tele" :title="userInfo.tele">{{userInfo.tele}}</p>
                     <div v-show="userInfo.intro" class="intro" :title="userInfo.intro">{{userInfo.intro}}</div>
                 </section>
-                <form  name="myform" action="" method="post" >
-                <textarea v-model="send" id="userpost" class="userpost" name="send" value="send"></textarea>
-                <button class="submit" @click.prevent="setSend(send)" >发送私信</button>
-            </form>
+                <form name="myform" action="" method="post">
+                    <textarea v-model="send" id="userpost" class="userpost" name="send" value="send"></textarea>
+                    <button class="submit" @click.prevent="setSend(send)">发送私信</button>
+                </form>
             </div>
         </aside>
         <div class="main-right">
-            <section  class="main-content">
+            <section class="main-content">
                 <router-view></router-view>
                 <page></page>
             </section>
@@ -30,40 +30,40 @@
 </style>
 
 <script>
-import page from './page'
-import {mapState,mapActions} from 'vuex'
-export default{
-    data(){
-        return{
-            send: ''
-        }
-    },
-    mounted () {
-        //alert('121212')
-      this.getotheruserinfo(this.$route.params.othuser)
-      //this.getuserly()
-    },
-    computed: {
-        ...mapState(['loginUser','userInfo','curPage'])
-    },
-    methods: {
-       ...mapActions(['getotheruserinfo','sendPrivateLetter','getPrivateLetter','sendPrivateLetter']),
-       changeCurPage () {
-           this.getPrivateLetter(this.$route.params.othuser) 
-       },
-       setSend (data){
-            if(this.sendPrivateLetter({ othuser : this.$route.params.othuser , privateletter : data})){
-                this.getPrivateLetter(this.$route.params.othuser) 
+    import page from './page'
+    import { mapState, mapActions } from 'vuex'
+    export default {
+        data() {
+            return {
+                send: ''
             }
-            this.send = ''
-       }
-    },
-    components:{
-       page,
-       module
-    },
-    watch: {
-      curPage: "changeCurPage"
+        },
+        mounted() {
+            //alert('121212')
+            this.getotheruserinfo(this.$route.params.othuser)
+            //this.getuserly()
+        },
+        computed: {
+            ...mapState(['loginUser', 'userInfo', 'curPage'])
+        },
+        methods: {
+            ...mapActions(['getotheruserinfo', 'sendPrivateLetter', 'getPrivateLetter', 'sendPrivateLetter']),
+            changeCurPage() {
+                this.getPrivateLetter(this.$route.params.othuser)
+            },
+            setSend(data) {
+                if (this.sendPrivateLetter({ othuser: this.$route.params.othuser, privateletter: data })) {
+                    this.getPrivateLetter(this.$route.params.othuser)
+                }
+                this.send = ''
+            }
+        },
+        components: {
+            page,
+            module
+        },
+        watch: {
+            curPage: "changeCurPage"
+        }
     }
-}
 </script>
